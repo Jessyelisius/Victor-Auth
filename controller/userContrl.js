@@ -89,6 +89,9 @@ const Login = async (req, res) => {
     res.status(400).json({ Error: true, Message: "Cannot login" });
   }
 };
+
+//////////////////forget  password route ///////////////////////
+const ForgotPassword = async (req, res) => {};
 module.exports = {
   Registration,
   Login,
