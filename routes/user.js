@@ -1,4 +1,9 @@
-const { Registration, Login } = require("../controller/userContrl");
+const {
+  Registration,
+  Login,
+  ForgotPassword,
+  ResetPassword,
+} = require("../controller/userContrl");
 
 const router = require("express").Router();
 
@@ -13,5 +18,8 @@ router.get("/login", async (req, res) => {
 });
 
 router.post("/login", Login);
+
+router.post("/forgetPwd", ForgotPassword);
+router.post("/resetPwd", ResetPassword);
 
 module.exports = router;
