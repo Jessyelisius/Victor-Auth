@@ -83,12 +83,24 @@ const Login = async (req, res) => {
     //save user session
     (req.session.userId = user.id), (req.session.userEmail = user.Email);
 
-    res
-      .status(200)
-      .json({ Error: false, Message: "Login successfull", User: user });
+    req.session.save((err) => {
+      if (err) {
+        console.error("Session save error:", err);
+        return res.status(400).json({ Error: true, Message: "Session error" });
+      }
+      res
+        .status(200)
+        .json({ Error: false, Message: "Login successful", User: user });
+    });
+
+    // res.status(200).json({
+    //   Error: false,
+    //   Message: "Login successfull",
+    //   User: user,
+    // });
   } catch (error) {
-    console.log("error loggin user", error);
-    res.status(400).json({ Error: true, Message: "Cannot login" });
+    console.log("error logging in user", error);
+    res.status(400).json({ Error: true, Message: "Cannot log in" });
   }
 };
 
