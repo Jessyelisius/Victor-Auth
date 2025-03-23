@@ -10,6 +10,6 @@ const ForgetPwdSchema = new mongoose.Schema({
     required: true,
     // Unique:true
   },
-});
+}, {timestamps:true});
 
 module.exports = mongoose.model("ForgetPassword", ForgetPwdSchema);
